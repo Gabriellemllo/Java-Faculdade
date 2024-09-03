@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Insira o seu salário bruto: ");
+        double salario = s.nextDouble ();
+        System.out.println();
+        double primeiraFaixa = (salario * 0.075);
+        double segundaFaixa = (99 + ((salario - 1320) * 0.09));
+        double terceiraFaixa = (217.80 + ((salario - 2640) * 0.12));
+        double quartaFaixa = (376.20 + ((salario - 3960) * 0.14));
+        double salarioPrimeiraFaixa = salario - primeiraFaixa;
+        double salarioSegundaFaixa = salario - segundaFaixa;
+        double salarioTerceiraFaixa = salario - terceiraFaixa;
+        double salarioQuartaFaixa = salario - quartaFaixa;
+
+
+        if (salario <= 1320){
+            System.out.print("Você contribuirá com " + primeiraFaixa + " e ficará com um salário líquido de  " + salarioPrimeiraFaixa );
+        }
+         else if (salario > 1320 && salario <= 2640){
+             System.out.print("Você contribuirá com " + segundaFaixa + " e ficará com um salário líquido de  " + salarioSegundaFaixa );
+         }
+         else if (salario > 2640 && salario <= 3960 ){
+             System.out.print("Você contribuirá com " + terceiraFaixa + " e ficará com um salário líquido de " + salarioTerceiraFaixa);
+         }
+         else {
+             System.out.print("Você contribuirá com " + quartaFaixa + " e ficará com um salário líquido de " + salarioQuartaFaixa);
+         }
+         }
+
+
+
+
+        }
