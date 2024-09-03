@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class ImpostodeRenda {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double salarioMensal = scanner.nextDouble();
+        double rendaAnual = salarioMensal * 12;
+        double imposto;
+
+        if (rendaAnual <= 27760.00) {
+            System.out.println("Você está isento.");
+        } else if (rendaAnual <= 37140.00) {
+            imposto = (rendaAnual - 27760.00) * 0.075 / 12;
+            System.out.printf("Você pagará R$ %.2f mensalmente.%n", imposto);
+        } else if (rendaAnual <= 46600.00) {
+            imposto = (rendaAnual - 37140.00) * 0.15 / 12 + 741.00 / 12;
+            System.out.printf("Você pagará R$ %.2f mensalmente.%n", imposto);
+        } else if (rendaAnual <= 55140.00) {
+            imposto = (rendaAnual - 46600.00) * 0.225 / 12 + 1_767.00 / 12;
+            System.out.printf("Você pagará R$ %.2f mensalmente.%n", imposto);
+        } else {
+            imposto = (rendaAnual - 55140.00) * 0.275 / 12 + 3_085.50 / 12;
+            System.out.printf("Você pagará R$ %.2f mensalmente.%n", imposto);
+        }
+
+        scanner.close();
+    }
+}
