@@ -29,9 +29,7 @@ public class Main {
          else {
              System.out.print("Você contribuirá com " + quartaFaixa + " e ficará com um salário líquido de " + salarioQuartaFaixa);
          }
-         }
-
-
-
-
-        }
+      
+         scanner.close();
+    }
+}
