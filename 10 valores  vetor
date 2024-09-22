@@ -1,0 +1,79 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double[] valores = new double[10];
+        boolean vetorEmOrdem = true;
+
+        for (int i = 0; i < 10; i++) {
+            System.out.println("Digite um número:");
+            valores[i] = scanner.nextDouble();
+        }
+
+        for (int i = 0; i < valores.length - 1; i++) {
+            if (valores[i] > valores[i + 1]) {
+                vetorEmOrdem = false;
+                break;
+            }
+        }
+
+        if (vetorEmOrdem) {
+            System.out.println("O vetor está em ordem crescente.");
+        } else {
+            System.out.println("O vetor NÃO está em ordem crescente.");
+        }
+
+        String desejaContinuar;
+        do {
+            System.out.println("Digite o número que deseja buscar:");
+            double valorBusca = scanner.nextDouble();
+            int posicao;
+
+            if (vetorEmOrdem) {
+                posicao = buscaBinaria(valores, valorBusca);
+            } else {
+                posicao = buscaSimples(valores, valorBusca);
+            }
+
+            if (posicao != -1) {
+                System.out.println("Valor encontrado na posição: " + posicao);
+            } else {
+                System.out.println("Valor não encontrado.");
+            }
+
+            System.out.println("Deseja continuar buscando? (s/n):");
+            desejaContinuar = scanner.next();
+        } while (desejaContinuar.equalsIgnoreCase("s"));
+
+        scanner.close();
+    }
+
+    public static int buscaBinaria(double[] array, double valor) {
+        int inicio = 0;
+        int fim = array.length - 1;
+
+        while (inicio <= fim) {
+            int meio = (inicio + fim) / 2;
+
+            if (array[meio] == valor) {
+                return meio;
+            } else if (array[meio] < valor) {
+                inicio = meio + 1;
+            } else {
+                fim = meio - 1;
+            }
+        }
+        return -1;
+    }
+
+    public static int buscaSimples(double[] array, double valor) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == valor) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
