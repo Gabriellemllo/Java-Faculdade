@@ -1,0 +1,98 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    public static Scanner scr = new Scanner(System.in);
+    public static final int Tam = 5;
+    public static void main(String[] args) {
+      int [] vetor1 = new int [Tam];
+      int [] vetor2 = new int [Tam];
+      int [] vetorResult = new int [Tam];
+
+      int num = 0;
+
+      System.out.println("Digite um numero :");
+      preencher_V(vetor1);
+      Imprimir(vetor1);
+
+      System.out.println("Digite outro numero :");
+      preencher_V(vetor2);
+      Imprimir(vetor2);
+
+      int index = Busca(vetor2,num);
+      Busca(vetor1,num);
+
+      System.out.println("Resultado em ordem reversa do vetor1:");
+      Imprimir_Result(vetor1,vetorResult);
+      System.out.println("Resultado em ordem reversa do vetor2:");
+      Imprimir_Result(vetor2,vetorResult);
+
+      System.out.println(" Resultado soma do vetorResult :");
+        SomaVetorResult(vetor1,vetor2,vetorResult);
+    }
+    public static void preencher_V(int[] v1){
+    for(int i = 0; i <Tam;i++){
+        v1[i] = scr.nextInt();
+    }
+    }
+    public static void Imprimir(int[] v1){
+        System.out.print("{");
+        for(int i = 0; i< Tam; i++){
+           System.out.print(v1[i]+",");
+        }
+        System.out.println("}");
+    }
+    public static int Busca(int[]v2 , int num){
+        System.out.print("Digite um numero para buscar:");
+        num = scr.nextInt();
+        for(int i = 0; i <Tam;i++){
+            if(v2[i] == num){
+                System.out.printf("Valor encontrado na posicao : %d\n" , i);
+                return i;
+            }
+        }
+        System.out.println("Não tem!!!");
+        return -1;
+    }
+    public static void Imprimir_Result(int[]v1,int[]VetorResult){
+        int num = 0;
+        for(int i = Tam -1; i>= 0;i--){
+            VetorResult[i] = v1[num];
+            num++;
+
+        }
+        Imprimir(VetorResult);
+    }
+
+    public static void SomaVetorResult(int[] v1, int[] v2, int[]V_Result){
+        for(int i = 0; i<Tam;i++){
+            V_Result[i] = v1[i] + v2[i];
+        }
+        Imprimir(V_Result);
+    }
+    public static void Impar_Result(int[] v1, int[] v2, int[]V_Result){
+        int num = 0;
+        for(int i = 0; i<Tam;i++){
+            if(num == Tam-1){
+                break;
+            }
+            if (v1[i] % 2 != 0) {
+                V_Result[num] = v1[i];
+                num++;
+            }
+
+        }
+        for(int i = 0; i<Tam;i++){
+            if(num == Tam-1){
+                break;
+            }
+            if(v2[i] %2 ==0){
+                V_Result[num]= v2[i];
+                num++;
+            }
+
+        }
+        Imprimir(V_Result);
+    }
+}
